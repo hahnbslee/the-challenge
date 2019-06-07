@@ -9,7 +9,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 
-import { CONTAINER_KEY } from '../constants';
+import { CONTAINER_KEY } from '../constants'; // use!!
 
 class LuckyNumber extends React.PureComponent {
   render() {
@@ -25,8 +25,19 @@ class LuckyNumber extends React.PureComponent {
   }
 }
 
-const mapStateToProps = () => ({
+const mapStateToProps = (state) => 
   // TODO: Get values from Redux store
-});
+   ({
+ 
+  })
+;
+
+// const mapStateToProps = state => {
+//   return {
+//       streams: Object.values(state.streams),
+//       currentUserId: state.auth.userId,
+//       isSignedIn: state.auth.isSignedIn
+//   };
+// };
 
 export default connect()(LuckyNumber);
