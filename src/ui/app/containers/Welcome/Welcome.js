@@ -20,6 +20,7 @@ import WelcomeForm from 'components/WelcomeForm/WelcomeForm';
 import { CONTAINER_KEY } from '../constants';
 import saga from '../saga';
 import reducer from '../reducer';
+import { getUserInfo } from '../actions';
 
 class Welcome extends React.PureComponent {
   constructor(props) {
@@ -38,8 +39,8 @@ class Welcome extends React.PureComponent {
     const { dispatch } = this.props;
 
     // TODO: Get the form values and invoke the service layer
-
-    dispatch(???);
+    getUserInfo(values); // ???
+    dispatch(values); // ???
   }
 
   render() {
@@ -50,7 +51,7 @@ class Welcome extends React.PureComponent {
         </Helmet>
 
         <div className="mt5 pa4 center w-25 bg-light-gray">
-          <WelcomeForm onSubmit={???} />
+          <WelcomeForm onSubmit={this.submit} /> {/* ??? */}
         </div>
       </article>
     );

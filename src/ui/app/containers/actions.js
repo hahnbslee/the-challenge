@@ -14,3 +14,10 @@ export function getLuckyNumber(username) {
 }
 
 // TODO: Add more actions if needed
+// ???
+export function getUserInfo(props) {
+  return {
+    type: DISPATCH_ACTIONS.GET_INFO,
+    payload: props
+  };
+}
