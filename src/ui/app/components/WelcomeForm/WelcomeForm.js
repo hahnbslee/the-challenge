@@ -22,9 +22,9 @@ class WelcomeForm extends React.PureComponent {
       <form className="flex flex-column">
         {/* TODO: Add elements to form to collect user input */}
         <Field
-          name="???"
+          name="userName"
           component={RFTextField}
-          label="???"
+          label="Enter Name"
         />
         <div className="center mt3">
           <Button variant="contained" color="primary" type="submit">
@@ -42,6 +42,17 @@ WelcomeForm.propTypes = {
 
 // TODO: Add validation
 // @see https://redux-form.com/7.4.2/docs/api/reduxform.md/
+
+const validate = (formValues) => {
+  const errors = {};
+  if(!formValues.title){
+      //only ran if the user did not enter a title
+      errors.userName = 'You must enter your name.';
+  }
+  return errors;
+};
+
 export default reduxForm({
   form: 'welcome',
+  validate
 })(WelcomeForm);
