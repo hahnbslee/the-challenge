@@ -3,16 +3,24 @@
  *
  * This file contains the various actions used by Redux.
  */
-import history from './history';
 import { DISPATCH_ACTIONS } from './constants';
 
 export function getLuckyNumber(username) {
-  history.push('/lucky');
   return {
     type: DISPATCH_ACTIONS.GET_LUCKY_NUMBER,
     username
   };
 }
+
+export const getNumberSuccess = (username) => ({
+  type: DISPATCH_ACTIONS.GET_LUCKY_NUMBER_SUCCESS,
+  payload: username,
+});
+export const getNumberFailure = (err) => ({
+  type: DISPATCH_ACTIONS.GET_LUCKY_NUMBER_FAILURE,
+  payload: err,
+  error: true,
+});
 
 // TODO: Add more actions if needed
 // ???

@@ -60,6 +60,7 @@ class Welcome extends React.PureComponent {
   }
 }
 
+
 Welcome.propTypes = {
   dispatch: PropTypes.func.isRequired,
   getLuckyNumber: PropTypes.func
