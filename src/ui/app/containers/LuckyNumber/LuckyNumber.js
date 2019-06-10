@@ -9,7 +9,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 
-import { CONTAINER_KEY } from '../constants'; // use!!
+// import { CONTAINER_KEY } from '../constants'; // use!!
+import LuckyNumberDisplay from '../../components/LuckyNumberDisplay/LuckyNumberDisplay';
 
 class LuckyNumber extends React.PureComponent {
   render() {
@@ -25,11 +26,9 @@ class LuckyNumber extends React.PureComponent {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state) =>
   // TODO: Get values from Redux store
-  return {
-    username: state.form.welcome.registeredFields.username
-  }
-};
-
+  ({
+    username: state.form.welcome.values.username
+  });
 export default connect(mapStateToProps)(LuckyNumber);

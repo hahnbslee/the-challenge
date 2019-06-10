@@ -10,12 +10,15 @@ import PropTypes from 'prop-types';
 
 class LuckyNumberDisplay extends React.PureComponent {
   render() {
+    console.log(this.props);
     // TODO: Receive props passed down from LuckyNumber container
-    const { } = this.props;
+    const { username } = this.props;
 
     return (
       <div className="mt5 pa4 center w-25 bg-light-gray">
-        {/* TODO: Display the user's full name and their lucky number */}
+        Hello, { username }!
+        <br />
+        Your lucky number is
       </div>
     );
   }

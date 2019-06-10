@@ -17,14 +17,20 @@ export const RFTextField = ({
   label,
   meta: { touched, error },
   ...custom
-}) => (
-  <TextField
-    label={label}
-    error={touched && error}
-    {...input}
-    {...custom}
-  />
-);
+}) => {
+  let error1 = false;
+  if (error) {
+    error1 = true;
+  }
+  return (
+    <TextField
+      label={label}
+      error={touched && error1}
+      {...input}
+      {...custom}
+    />
+  );
+};
 
 RFTextField.propTypes = {
   input: PropTypes.any.isRequired,

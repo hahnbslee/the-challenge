@@ -16,11 +16,11 @@ import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 
 import WelcomeForm from 'components/WelcomeForm/WelcomeForm';
-
+import { getLuckyNumber } from '../actions';
 import { CONTAINER_KEY, DISPATCH_ACTIONS } from '../constants';
 import saga from '../saga';
 import reducer from '../reducer';
-// import { getUserInfo } from '../actions';
+
 
 class Welcome extends React.PureComponent {
   constructor(props) {
@@ -36,8 +36,8 @@ class Welcome extends React.PureComponent {
    * @param {*} values An immutable map of the Redux Form values
    */
   submit(values) {
+    this.props.getLuckyNumber(values);
     const { dispatch } = this.props;
-
     // TODO: Get the form values and invoke the service layer
     dispatch({
       type: DISPATCH_ACTIONS.GET_LUCKY_NUMBER,
@@ -61,7 +61,8 @@ class Welcome extends React.PureComponent {
 }
 
 Welcome.propTypes = {
-  dispatch: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired,
+  getLuckyNumber: PropTypes.func
 };
 
 // These are some handy functions provided by the boilerplate project

@@ -11,19 +11,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { reduxForm, Field } from 'redux-form/immutable';
 import Button from '@material-ui/core/Button';
-import {validate} from './validate';
-
 import { RFTextField } from 'components/ReduxFormFields/RFTextField';
+
+import { validate } from './validate';
+
 
 class WelcomeForm extends React.PureComponent {
   onSubmit = (values) => {
-    this.props.onSubmit(values);
+    /* eslint no-underscore-dangle: ["error", { "allow": ["foo_", "_root"] }] */
+    // const { root } = values.Map._root;
+    console.log(values);
+    this.props.submit(values);
   }
   render() {
     const { handleSubmit } = this.props;
 
     return (
-      <form 
+      <form
         onSubmit={handleSubmit(this.onSubmit)}
         className="flex flex-column"
       >
@@ -54,12 +58,17 @@ class WelcomeForm extends React.PureComponent {
 }
 
 WelcomeForm.propTypes = {
-  handleSubmit: PropTypes.func.isRequired
+  handleSubmit: PropTypes.func.isRequired,
+  submit: PropTypes.func
 };
 
 // TODO: Add validation
 // @see https://redux-form.com/7.4.2/docs/api/reduxform.md/
-
+// const formWrapped = reduxForm({
+//   form: 'welcome',
+//   validate
+// })(WelcomeForm);
+// export default connect(null, { getLuckyNumber })(formWrapped);
 export default reduxForm({
   form: 'welcome',
   validate
