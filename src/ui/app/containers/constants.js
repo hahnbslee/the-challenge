@@ -9,6 +9,6 @@ export const CONTAINER_KEY = 'code-challenge/welcome';
 
 // TODO: Add more action constants if needed
 export const DISPATCH_ACTIONS = {
-  GET_INFO: 'GET_INFO', // ???
+  // GET_INFO: 'GET_INFO', // ???
   GET_LUCKY_NUMBER: `${CONTAINER_KEY}/GET_LUCKY_NUMBER`
 };

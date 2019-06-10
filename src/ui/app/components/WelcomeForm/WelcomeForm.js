@@ -60,8 +60,6 @@ WelcomeForm.propTypes = {
 // TODO: Add validation
 // @see https://redux-form.com/7.4.2/docs/api/reduxform.md/
 
-
-
 export default reduxForm({
   form: 'welcome',
   validate

@@ -14,11 +14,12 @@ const initialState = fromJS({
   luckyNumber: -1
 });
 
+// a function should exist for each base property of state
 function reducer(state = initialState, action) {
   switch (action.type) {
     case DISPATCH_ACTIONS.GET_LUCKY_NUMBER:
       // TODO: Set things in the Redux store
-      return '7';
+      return action.payload;
     default:
       return state;
   }

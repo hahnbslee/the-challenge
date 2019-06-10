@@ -17,10 +17,10 @@ import injectReducer from 'utils/injectReducer';
 
 import WelcomeForm from 'components/WelcomeForm/WelcomeForm';
 
-import { CONTAINER_KEY } from '../constants';
+import { CONTAINER_KEY, DISPATCH_ACTIONS } from '../constants';
 import saga from '../saga';
 import reducer from '../reducer';
-import { getUserInfo } from '../actions';
+// import { getUserInfo } from '../actions';
 
 class Welcome extends React.PureComponent {
   constructor(props) {
@@ -39,8 +39,10 @@ class Welcome extends React.PureComponent {
     const { dispatch } = this.props;
 
     // TODO: Get the form values and invoke the service layer
-    getUserInfo(values); // ???
-    dispatch(values); // ???
+    dispatch({
+      type: DISPATCH_ACTIONS.GET_LUCKY_NUMBER,
+      payload: values
+    }); // ???
   }
 
   render() {
