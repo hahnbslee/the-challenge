@@ -5,10 +5,10 @@
  */
 import { DISPATCH_ACTIONS } from './constants';
 
-export function getLuckyNumber(username) {
+export function getLuckyNumber(props) {
   return {
     type: DISPATCH_ACTIONS.GET_LUCKY_NUMBER,
-    username
+    payload: props
   };
 }
 

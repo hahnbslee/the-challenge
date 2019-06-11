@@ -17,13 +17,18 @@ import request from 'utils/request';
 import { DISPATCH_ACTIONS } from './constants';
 import { getNumberSuccess, getNumberFailure } from './actions';
 
-export function* getLuckyNumber({ username }) {
+export function* getLuckyNumber(props) {
   // TODO: What port is the service layer running on again?
-  const requestUrl = `http://localhost:1337/lucky-number?username=${username}`;
+  console.log(props);
+  const requestUrl = `http://localhost:1337/lucky-number?username=${props.payload}`;
   let result;
   try {
     result = yield call(request, requestUrl);
+    // result = props.result;
+    // console.log(result);
     yield put({ type: DISPATCH_ACTIONS.GET_LUCKY_NUMBER, result });
+
+    yield put(push('/lucky'));
     // TODO: Do stuff with the result
   } catch (err) {
     // TODO: Bonus points for some error handling

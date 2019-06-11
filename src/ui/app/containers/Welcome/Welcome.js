@@ -36,13 +36,14 @@ class Welcome extends React.PureComponent {
    * @param {*} values An immutable map of the Redux Form values
    */
   submit(values) {
-    getLuckyNumber(values);
-    const { dispatch, userName } = this.props;
+    getLuckyNumber(values._root.entries[0][1]);
+    const { dispatch } = this.props;
     // TODO: Get the form values and invoke the service layer
+    // console.log(values._root.entries[0][1]);
+    /* eslint no-underscore-dangle: ["error", { "allow": ["_root"] }] */
     dispatch({
       type: DISPATCH_ACTIONS.GET_LUCKY_NUMBER,
-      payload: values,
-      userName
+      payload: values._root.entries[0][1],
     }); // ???
   }
 

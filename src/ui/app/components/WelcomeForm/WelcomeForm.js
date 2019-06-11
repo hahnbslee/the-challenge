@@ -12,24 +12,23 @@ import PropTypes from 'prop-types';
 import { reduxForm, Field } from 'redux-form/immutable';
 import Button from '@material-ui/core/Button';
 import { RFTextField } from 'components/ReduxFormFields/RFTextField';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 
 import { validate } from './validate';
-// import { getLuckyNumber } from '../../containers/actions';
+import { getLuckyNumber } from '../../containers/actions';
 
 class WelcomeForm extends React.PureComponent {
   onSubmit = (values) => {
     /* eslint no-underscore-dangle: ["error", { "allow": ["_root"] }] */
-    // const { root } = values.Map._root;
-    console.log(values);
-    this.props.submit(values);
+    // console.log(values._root.entries[0][1]);
+    this.props.getLuckyNumber(values._root.entries[0][1]);
   }
   render() {
     const { handleSubmit } = this.props;
 
     return (
       <form
-        onSubmit={handleSubmit(this.onSubmit.bind(this))}
+        onSubmit={handleSubmit}
         className="flex flex-column"
       >
         {/* TODO: Add elements to form to collect user input */}
@@ -60,7 +59,8 @@ class WelcomeForm extends React.PureComponent {
 
 WelcomeForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
-  submit: PropTypes.func
+  submit: PropTypes.func,
+  getLuckyNumber: PropTypes.func
 };
 
 // TODO: Add validation
