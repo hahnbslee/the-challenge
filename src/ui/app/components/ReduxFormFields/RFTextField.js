@@ -18,9 +18,11 @@ export const RFTextField = ({
   meta: { touched, error },
   ...custom
 }) => {
-  let error1 = false;
+  let error1;
   if (error) {
     error1 = true;
+  } else {
+    error1 = false;
   }
   return (
     <TextField

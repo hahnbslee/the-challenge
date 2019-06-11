@@ -19,7 +19,7 @@ function reducer(state = initialState, action) {
   switch (action.type) {
     case DISPATCH_ACTIONS.GET_LUCKY_NUMBER:
       // TODO: Set things in the Redux store
-      return action.payload;
+      return { ...state, [action.payload]: action.payload };
     default:
       return state;
   }

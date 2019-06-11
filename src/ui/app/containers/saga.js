@@ -15,20 +15,23 @@ import { push } from 'react-router-redux';
 import request from 'utils/request';
 
 import { DISPATCH_ACTIONS } from './constants';
+import { getNumberSuccess, getNumberFailure } from './actions';
 
 export function* getLuckyNumber({ username }) {
   // TODO: What port is the service layer running on again?
   const requestUrl = `http://localhost:1337/lucky-number?username=${username}`;
-
+  let result;
   try {
-    const result = yield call(request, requestUrl);
-    yield put({ type: 'DISPATCH_ACTIONS.GET_LUCKY_NUMBER', result });
+    result = yield call(request, requestUrl);
+    yield put({ type: DISPATCH_ACTIONS.GET_LUCKY_NUMBER, result });
     // TODO: Do stuff with the result
   } catch (err) {
     // TODO: Bonus points for some error handling
-    yield put({ type: 'GET_LUCKY_NUMBER_FAILED', message: err.message });
+    yield put({ type: DISPATCH_ACTIONS.GET_LUCKY_NUMBER_FAILED, message: err.message });
+    yield put(getNumberFailure(err));
+    // continue;
   }
-
+  yield put(getNumberSuccess(result));
   yield put(push('/lucky'));
 }
 

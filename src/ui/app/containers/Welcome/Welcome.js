@@ -36,12 +36,13 @@ class Welcome extends React.PureComponent {
    * @param {*} values An immutable map of the Redux Form values
    */
   submit(values) {
-    this.props.getLuckyNumber(values);
-    const { dispatch } = this.props;
+    getLuckyNumber(values);
+    const { dispatch, userName } = this.props;
     // TODO: Get the form values and invoke the service layer
     dispatch({
       type: DISPATCH_ACTIONS.GET_LUCKY_NUMBER,
-      payload: values
+      payload: values,
+      userName
     }); // ???
   }
 
@@ -63,7 +64,8 @@ class Welcome extends React.PureComponent {
 
 Welcome.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  getLuckyNumber: PropTypes.func
+  getLuckyNumber: PropTypes.func,
+  userName: PropTypes.string
 };
 
 // These are some handy functions provided by the boilerplate project

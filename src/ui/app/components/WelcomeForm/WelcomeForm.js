@@ -12,16 +12,16 @@ import PropTypes from 'prop-types';
 import { reduxForm, Field } from 'redux-form/immutable';
 import Button from '@material-ui/core/Button';
 import { RFTextField } from 'components/ReduxFormFields/RFTextField';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 
 import { validate } from './validate';
-import { getLuckyNumber } from '../../containers/actions';
+// import { getLuckyNumber } from '../../containers/actions';
 
 class WelcomeForm extends React.PureComponent {
   onSubmit = (values) => {
-    /* eslint no-underscore-dangle: ["error", { "allow": ["foo_", "_root"] }] */
+    /* eslint no-underscore-dangle: ["error", { "allow": ["_root"] }] */
     // const { root } = values.Map._root;
-
+    console.log(values);
     this.props.submit(values);
   }
   render() {
@@ -29,7 +29,7 @@ class WelcomeForm extends React.PureComponent {
 
     return (
       <form
-        onSubmit={handleSubmit(this.onSubmit)}
+        onSubmit={handleSubmit(this.onSubmit.bind(this))}
         className="flex flex-column"
       >
         {/* TODO: Add elements to form to collect user input */}
@@ -65,17 +65,17 @@ WelcomeForm.propTypes = {
 
 // TODO: Add validation
 // @see https://redux-form.com/7.4.2/docs/api/reduxform.md/
+// not needed?
+// const mapDispatchToProps = (dispatch) => ({
+//   onSubmit: (data) => dispatch(getLuckyNumber(data)),
+// });
 
-const mapDispatchToProps = (dispatch) => ({
-  onSubmit: (data) => dispatch(getLuckyNumber(data)),
-});
-
-const formWrapped = reduxForm({
-  form: 'welcome',
-  validate
-})(WelcomeForm);
-export default connect(mapDispatchToProps)(formWrapped);
-// export default reduxForm({
+// const formWrapped = reduxForm({
 //   form: 'welcome',
 //   validate
 // })(WelcomeForm);
+// export default connect(mapDispatchToProps)(formWrapped); // not needed?
+export default reduxForm({
+  form: 'welcome',
+  validate
+})(WelcomeForm);
