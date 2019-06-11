@@ -19,8 +19,15 @@ function reducer(state = initialState, action) {
   switch (action.type) {
     case DISPATCH_ACTIONS.GET_LUCKY_NUMBER_SUCCESS:
       // TODO: Set things in the Redux store
-      // console.log(action.result.luckyNumber);
-      return state.set('luckyNumber', action.luckyNumber);
+      console.log('state', state);
+
+      return (
+        this.setState({
+          luckyNumber: action.data.luckyNumber,
+          firstName: action.data.firstName,
+          lastName: action.data.lastName
+        })
+      );
     default:
       return state;
   }

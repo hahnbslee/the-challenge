@@ -5,16 +5,17 @@
  */
 import { DISPATCH_ACTIONS } from './constants';
 
-export function getLuckyNumber(userName) {
+export function getLuckyNumber(entries) {
   return {
     type: DISPATCH_ACTIONS.GET_LUCKY_NUMBER,
-    userName
+    entries
   };
 }
-export function getNumberSuccess(luckyNumber) {
+// data holds firstName, lastName, luckyNumber
+export function getNumberSuccess(data) {
   return {
     type: DISPATCH_ACTIONS.GET_LUCKY_NUMBER_SUCCESS,
-    luckyNumber
+    data
   };
 }
 export const getNumberFailure = (err) => ({
@@ -22,12 +23,3 @@ export const getNumberFailure = (err) => ({
   payload: err,
   error: true,
 });
-
-// TODO: Add more actions if needed
-// ???
-// export function submitForm(props) {
-//   return {
-//     type: DISPATCH_ACTIONS.SUBMIT_FORM,
-//     payload: props
-//   };
-// }
