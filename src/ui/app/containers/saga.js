@@ -17,27 +17,21 @@ import request from 'utils/request';
 import { DISPATCH_ACTIONS } from './constants';
 import { getNumberSuccess, getNumberFailure } from './actions';
 
-export function* getLuckyNumber(props) {
+export function* getLuckyNumber({ userName }) {
   // TODO: What port is the service layer running on again?
-  console.log(props);
-  const requestUrl = `http://localhost:1337/lucky-number?username=${props.payload}`;
+  const requestUrl = `http://localhost:1337/lucky-number?username=${userName}`;
   let result;
   try {
     result = yield call(request, requestUrl);
-    // result = props.result;
-    // console.log(result);
-    yield put({ type: DISPATCH_ACTIONS.GET_LUCKY_NUMBER, result });
-
+    const { luckyNumber } = result;
+    yield put(getNumberSuccess(luckyNumber));
     yield put(push('/lucky'));
     // TODO: Do stuff with the result
   } catch (err) {
     // TODO: Bonus points for some error handling
-    yield put({ type: DISPATCH_ACTIONS.GET_LUCKY_NUMBER_FAILED, message: err.message });
-    yield put(getNumberFailure(err));
+    yield put(getNumberFailure(err)); // action
     // continue;
   }
-  yield put(getNumberSuccess(result));
-  yield put(push('/lucky'));
 }
 
 export default function* sagaFunction() {

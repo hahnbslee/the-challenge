@@ -5,17 +5,18 @@
  */
 import { DISPATCH_ACTIONS } from './constants';
 
-export function getLuckyNumber(props) {
+export function getLuckyNumber(userName) {
   return {
     type: DISPATCH_ACTIONS.GET_LUCKY_NUMBER,
-    payload: props
+    userName
   };
 }
-
-export const getNumberSuccess = (username) => ({
-  type: DISPATCH_ACTIONS.GET_LUCKY_NUMBER_SUCCESS,
-  payload: username,
-});
+export function getNumberSuccess(luckyNumber) {
+  return {
+    type: DISPATCH_ACTIONS.GET_LUCKY_NUMBER_SUCCESS,
+    luckyNumber
+  };
+}
 export const getNumberFailure = (err) => ({
   type: DISPATCH_ACTIONS.GET_LUCKY_NUMBER_FAILURE,
   payload: err,

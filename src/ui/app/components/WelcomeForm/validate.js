@@ -11,19 +11,19 @@
  * @param {} values An immutable Map of values from Redux Form
  * @returns An errors object with any validation errors
  */
-export const validate = ({ userName, firstName, lastName }) => {
+export const validate = (values) => {
   const errors = {};
 
   // TODO: Validate that the user has entered a username, first name, and last name
-  if (!userName || userName.trim() === '' || userName.length === 0) {
+  if (!values.get('userName') || values.get('userName').trim() === '' || values.get('userName').length === 0) {
     errors.userName = 'You must enter your username.';
   }
 
-  if (!firstName || firstName.trim() === '' || firstName.length === 0) {
+  if (!values.get('firstName') || values.get('firstName').trim() === '' || values.get('firstName').length === 0) {
     errors.firstName = 'You must enter your First Name.';
   }
 
-  if (!lastName || lastName.trim() === '' || lastName.length === 0) {
+  if (!values.get('lastName') || values.get('lastName').trim() === '' || values.get('lastName').length === 0) {
     errors.lastName = 'You must enter your Last Name.';
   }
 

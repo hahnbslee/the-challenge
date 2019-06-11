@@ -17,10 +17,10 @@ const initialState = fromJS({
 // a function should exist for each base property of state
 function reducer(state = initialState, action) {
   switch (action.type) {
-    case DISPATCH_ACTIONS.GET_LUCKY_NUMBER:
+    case DISPATCH_ACTIONS.GET_LUCKY_NUMBER_SUCCESS:
       // TODO: Set things in the Redux store
       // console.log(action.result.luckyNumber);
-      return { ...state, action };
+      return state.set('luckyNumber', action.luckyNumber);
     default:
       return state;
   }
