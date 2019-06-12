@@ -16,12 +16,7 @@ const initialState = fromJS({
 
 // a function should exist for each base property of state
 function reducer(state = initialState, action) {
-  function setMultiple(state = initialState, action) {
-    state.set('luckyNumber', action.data.luckyNumber);
-    state.set('firstName', action.data.firstName);
-    state.set('lastName', action.data.lastName);
-    return [...state];
-  }
+  
   switch (action.type) {
     case DISPATCH_ACTIONS.GET_LUCKY_NUMBER_SUCCESS:
       // TODO: Set things in the Redux store
