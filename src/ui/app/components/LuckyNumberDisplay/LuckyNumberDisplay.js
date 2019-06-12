@@ -15,10 +15,16 @@ class LuckyNumberDisplay extends React.PureComponent {
     const { firstName, lastName, luckyNumber } = this.props;
 
     return (
-      <div className="mt5 pa4 center w-25 bg-light-gray">
-        Hello, {firstName} {lastName}!
-        <br />
-        Your lucky number is { luckyNumber }
+      // <div className="h-100 pa7 center w-100 bg-light-gray"></div>
+      <div className="aspect-ratio--object pa7 bg-light-gray tc system-serif f-headline">
+
+          Hello, {firstName} {lastName}!
+        <div className="pv5">
+          Your lucky number is
+        </div>
+        <div className="pv4">
+          { luckyNumber }
+        </div>
       </div>
     );
   }
@@ -26,7 +32,8 @@ class LuckyNumberDisplay extends React.PureComponent {
 
 // TODO: Add PropTypes
 LuckyNumberDisplay.propTypes = {
-  userName: PropTypes.any, // temporary fix
+  firstName: PropTypes.string,
+  lastName: PropTypes.string,
   luckyNumber: PropTypes.number
 };
 
