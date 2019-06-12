@@ -29,7 +29,7 @@ class LuckyNumber extends React.PureComponent {
 // const mapStateToProps = (state) =>
 // TODO: Get values from Redux store
 function mapStateToProps(state) {
-  console.log('mapStateToProps', state);
+  // console.log('mapStateToProps', state);
   return {
     luckyNumber: state.getIn([CONTAINER_KEY, 'luckyNumber']),
     firstName: state.getIn([CONTAINER_KEY, 'firstName']),

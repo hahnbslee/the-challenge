@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 
 class LuckyNumberDisplay extends React.PureComponent {
   render() {
-    console.log('luckyNumberDisplay', this.props);
+    // console.log('luckyNumberDisplay', this.props);
     // TODO: Receive props passed down from LuckyNumber container
     const { userName, luckyNumber } = this.props;
 
